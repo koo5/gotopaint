@@ -43,9 +43,34 @@ MOUSE:
   if (getmouse(&event) != OK)         goto TOP;
   attron( A_REVERSE );
   mvprintw(0, 0, "(%2i,%2i)", event.x, event.y);
+  if (event.bstate &        REPORT_MOUSE_POSITION    )mvprintw(0, 10, "report mouse movement                      ");
+  if (event.bstate &        BUTTON1_PRESSED          )mvprintw(0, 10, "mouse button 1 down                        ");
+  if (event.bstate &        BUTTON1_RELEASED         )mvprintw(0, 10, "mouse button 1 up                          ");
+  if (event.bstate &        BUTTON1_CLICKED          )mvprintw(0, 10, "mouse button 1 clicked                     ");
+  if (event.bstate &        BUTTON1_DOUBLE_CLICKED   )mvprintw(0, 10, "mouse button 1 double clicked              ");
+  if (event.bstate &        BUTTON1_TRIPLE_CLICKED   )mvprintw(0, 10, "mouse button 1 triple clicked              ");
+  if (event.bstate &        BUTTON2_PRESSED          )mvprintw(0, 10, "mouse button 2 down                        ");
+  if (event.bstate &        BUTTON2_RELEASED         )mvprintw(0, 10, "mouse button 2 up                          ");
+  if (event.bstate &        BUTTON2_CLICKED          )mvprintw(0, 10, "mouse button 2 clicked                     ");
+  if (event.bstate &        BUTTON2_DOUBLE_CLICKED   )mvprintw(0, 10, "mouse button 2 double clicked              ");
+  if (event.bstate &        BUTTON2_TRIPLE_CLICKED   )mvprintw(0, 10, "mouse button 2 triple clicked              ");
+  if (event.bstate &        BUTTON3_PRESSED          )mvprintw(0, 10, "mouse button 3 down                        ");
+  if (event.bstate &        BUTTON3_RELEASED         )mvprintw(0, 10, "mouse button 3 up                          ");
+  if (event.bstate &        BUTTON3_CLICKED          )mvprintw(0, 10, "mouse button 3 clicked                     ");
+  if (event.bstate &        BUTTON3_DOUBLE_CLICKED   )mvprintw(0, 10, "mouse button 3 double clicked              ");
+  if (event.bstate &        BUTTON3_TRIPLE_CLICKED   )mvprintw(0, 10, "mouse button 3 triple clicked              ");
+  if (event.bstate &        BUTTON4_PRESSED          )mvprintw(0, 10, "mouse button 4 down                        ");
+  if (event.bstate &        BUTTON4_RELEASED         )mvprintw(0, 10, "mouse button 4 up                          ");
+  if (event.bstate &        BUTTON4_CLICKED          )mvprintw(0, 10, "mouse button 4 clicked                     ");
+  if (event.bstate &        BUTTON4_DOUBLE_CLICKED   )mvprintw(0, 10, "mouse button 4 double clicked              ");
+  if (event.bstate &        BUTTON4_TRIPLE_CLICKED   )mvprintw(0, 10, "mouse button 4 triple clicked              ");
+  if (event.bstate &        BUTTON_SHIFT             )mvprintw(0, 10, "shift was down during button state change  ");
+  if (event.bstate &        BUTTON_CTRL              )mvprintw(0, 10, "control was down during button state change");
+  if (event.bstate &        BUTTON_ALT               )mvprintw(0, 10, "alt was down during button state change    ");
   attroff( A_REVERSE );
-  if (event.bstate & BUTTON2_PRESSED) goto ERASE;
-  if (event.bstate & BUTTON1_PRESSED) goto DRAW;
+//  if (event.bstate & BUTTON2_PRESSED) goto ERASE;
+//  if (event.bstate & BUTTON1_PRESSED) 
+  goto DRAW;
   goto TOP;
 DRAW:
   mvprintw(event.y, event.x, "%s", "#");
